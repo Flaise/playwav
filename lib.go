@@ -55,6 +55,9 @@ func FromReader(reader io.ReadSeeker, size int64) error {
 		samplerate = 44100
 	}
 
+	// Temporary fix. Now plays at correct pitch but wrong duration.
+	samplerate /= 2
+
 	out, err := alsa.NewPlaybackDevice("default", 1, alsa.FormatS16LE, samplerate, alsa.BufferParams{})
 	if err != nil {
 		return errors.New(fmt.Sprint("ALSA:", err))
