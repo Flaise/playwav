@@ -1,4 +1,4 @@
-module github.com/aerth/playwav
+module github.com/Flaise/playwav
 
 go 1.18
 
