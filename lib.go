@@ -28,9 +28,8 @@ import (
 	"io"
 	"os"
 
-	"github.com/cocoonlife/goalsa"
+	alsa "github.com/cocoonlife/goalsa"
 	"github.com/cryptix/wav"
-
 )
 
 func FromFile(filename string) (wavinfo string, err error) {
@@ -69,7 +68,7 @@ func FromFile(filename string) (wavinfo string, err error) {
 	if samplerate > 100000 {
 		samplerate = 44100
 	}
-	fmt.Println(samplerate)
+
 	out, err := alsa.NewPlaybackDevice("default", 1, alsa.FormatS16LE, samplerate, alsa.BufferParams{})
 	if err != nil {
 		return wavinfo, errors.New(fmt.Sprint("alsa:", err))
