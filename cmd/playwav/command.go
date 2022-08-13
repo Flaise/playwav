@@ -36,11 +36,9 @@ func main() {
 
 	for _, filename := range os.Args[1:] {
 		print(filename + "\n")
-		wavinfo, err := playwav.FromFile(filename)
+		err := playwav.FromFile(filename)
 		if err != nil {
 			print(err.Error() + "\n")
 		}
-
-		print(wavinfo + "\n")
 	}
 }
