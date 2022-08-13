@@ -32,22 +32,10 @@ import (
 	"github.com/cryptix/wav"
 )
 
-func FromFile(filename string) error {
-
-	// file exists
-	soundfile, err := os.Open(filename)
-	if err != nil {
-		return errors.New(fmt.Sprint("open:", err))
-	}
-
-	// stat for size
-	sndfileinfo, err := os.Stat(soundfile.Name())
-	if err != nil {
-		return errors.New(fmt.Sprint("stat:", err))
-	}
+func FromReader(reader io.ReadSeeker, size int64) error {
 
 	// wavReader
-	wavReader, err := wav.NewReader(soundfile, sndfileinfo.Size())
+	wavReader, err := wav.NewReader(reader, size)
 	if err != nil {
 		return errors.New(fmt.Sprint("WAV reader:", err))
 	}
@@ -99,4 +87,21 @@ func FromFile(filename string) error {
 	}
 
 	return nil
+}
+
+func FromFile(filename string) error {
+	// file exists
+	file, err := os.Open(filename)
+	if err != nil {
+		return errors.New(fmt.Sprint("open:", err))
+	}
+
+	// stat for size
+	sndfileinfo, err := os.Stat(file.Name())
+	if err != nil {
+		return errors.New(fmt.Sprint("stat:", err))
+	}
+	size := sndfileinfo.Size()
+
+	return FromReader(file, size)
 }
