@@ -6,12 +6,12 @@
   * compilation adds requirements: CGO and some c libraries (ALSA)
 
 ## playwav command
-  ```go get -v github.com/aerth/playwav/cmd/playwav```
+  ```go get -v github.com/Flaise/playwav/cmd/playwav```
 
 ## playwav library
 
 ```
-import "github.com/aerth/playwav"
+import "github.com/Flaise/playwav"
 
 // from file
 playwav.FromFile("example.wav")

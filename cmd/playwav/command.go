@@ -25,7 +25,7 @@ package main
 import (
 	"os"
 
-	"github.com/aerth/playwav"
+	"github.com/Flaise/playwav"
 )
 
 func main() {
@@ -41,6 +41,6 @@ func main() {
 			print(err.Error() + "\n")
 		}
 
-		print(wavinfo+"\n")
+		print(wavinfo + "\n")
 	}
 }
